@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Main Container */
+.room-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Hotel Name */
+.hotel-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Box Layout */
+.room-box {
+    background: #fff;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Main Room Image */
+.main-room-photo {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Right Side Details */
+.room-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.fits {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Offers */
+.offer-list {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.offer-list li {
+    margin-bottom: 6px;
+    color: #1a7c1a;
+    font-size: 15px;
+}
+
+.non-refund {
+    color: #dd3333;
+}
+
+.view-all {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #007aff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Price Box */
+.price-section {
+    margin: 10px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.new-price {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.tax-info {
+    color: #666;
+    font-size: 13px;
+}
+
+/* Button */
+.book-btn {
+    background: linear-gradient(90deg, #007bff, #005be6);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Icons Info */
+.icon-info {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.info-item {
+    font-size: 15px;
+}
+
+@media(max-width: 800px) {
+    .room-box {
+        grid-template-columns: 1fr;
+    }
+}

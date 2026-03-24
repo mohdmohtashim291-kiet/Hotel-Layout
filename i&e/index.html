@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Resource Exchange</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>♻ Campus Waste & Resource Exchange</h1>
+  <p>Reuse • Reduce • Reward</p>
+</header>
+
+<section class="form-section">
+  <h2>Add Resource</h2>
+  <input type="text" id="itemName" placeholder="Item Name">
+  <select id="category">
+    <option value="">Select Category</option>
+    <option>Books</option>
+    <option>Electronics</option>
+    <option>Food</option>
+    <option>Clothes</option>
+    <option>Others</option>
+  </select>
+  <textarea id="description" placeholder="Description"></textarea>
+  <button onclick="addItem()">Add Item</button>
+</section>
+
+<section class="items-section">
+  <h2>Available Resources</h2>
+  <div id="items"></div>
+</section>
+
+<footer>
+  <p>🌱 Building Sustainable Campuses</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

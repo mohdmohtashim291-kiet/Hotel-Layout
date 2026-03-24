@@ -1,0 +1,100 @@
+/* Background Image */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('backgrround.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+}
+
+/* Glassmorphic Login Box */
+.login-card {
+    width: 450px;
+    padding: 40px 35px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
+
+.login-card h2 {
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+/* Input Box */
+.input-box {
+    position: relative;
+    margin: 18px 0;
+}
+
+.input-box input {
+    width: 80%;
+    padding: 15px 55px 15px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.input-box input::placeholder {
+    color: #f0f0f0;
+}
+
+/* Icons */
+.icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: white;
+}
+
+/* Options Row */
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.options a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #c965ff, #6bc8ff);
+    cursor: pointer;
+    color: white;
+}
+
+/* Bottom Register Text */
+.register-text {
+    margin-top: 22px;
+    font-size: 15px;
+}
+
+.register-text a {
+    color: #fff;
+    font-weight: 600;
+}

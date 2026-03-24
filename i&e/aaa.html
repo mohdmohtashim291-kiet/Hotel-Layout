@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Waste & Resource Exchange</title>
+
+<style>
+
+/* ===============================
+   Animated Background
+================================ */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #1abc9c, #16a085, #2ecc71, #27ae60);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* ===============================
+   Header
+================================ */
+header {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+/* ===============================
+   Glass Card
+================================ */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+/* ===============================
+   Floating Input Fields
+================================ */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #555;
+  font-size: 14px;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  background: #fff;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+/* ===============================
+   Button
+================================ */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* ===============================
+   Resource Cards
+================================ */
+.resource-list {
+  display: grid;
+  gap: 15px;
+}
+
+.resource-item {
+  background: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 15px;
+  animation: slideIn 0.5s ease;
+  transition: 0.3s;
+}
+
+.resource-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.3);
+}
+
+@keyframes slideIn {
+  from {opacity: 0; transform: translateX(-20px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+.resource-item h3 {
+  margin: 0;
+}
+
+.resource-item small {
+  opacity: 0.8;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>♻ Campus Waste & Resource Exchange</h1>
+  <p>Reuse • Reduce • Reward</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Add Resource</h2>
+
+    <div class="input-group">
+      <input type="text" id="itemName" placeholder=" " required>
+      <label>Item Name</label>
+    </div>
+
+    <div class="input-group">
+      <select id="category">
+        <option value="">Select Category</option>
+        <option>Books</option>
+        <option>Electronics</option>
+        <option>Furniture</option>
+        <option>Clothing</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <textarea id="description" rows="3" placeholder=" "></textarea>
+      <label>Description</label>
+    </div>
+
+    <a href="browser.html"><button onclick="addItem()">Add Item</button></a>
+  </div>
+
+  <div class="card">
+    <h2>Available Resources</h2>
+    <div class="resource-list" id="resourceList"></div>
+  </div>
+
+</div>
+
+<footer>
+  🌱 Building Sustainable Campuses
+</footer>
+
+<script>
+
+function addItem() {
+  const name = document.getElementById("itemName").value;
+  const category = document.getElementById("category").value;
+  const description = document.getElementById("description").value;
+
+  if (!name || !category) {
+    alert("Please fill all required fields!");
+    return;
+  }
+
+  const list = document.getElementById("resourceList");
+
+  const item = document.createElement("div");
+  item.className = "resource-item";
+  item.innerHTML = `
+    <h3>${name}</h3>
+    <small>Category: ${category}</small>
+    <p>${description}</p>
+  `;
+
+  list.prepend(item);
+
+  // Reset fields
+  document.getElementById("itemName").value = "";
+  document.getElementById("category").value = "";
+  document.getElementById("description").value = "";
+}
+
+</script>
+
+</body>
+</html>

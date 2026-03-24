@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Resources | Campus Exchange</title>
+
+<style>
+
+/* ===== Animated Background ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #27ae60, #2ecc71, #16a085, #1abc9c);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* ===== Navbar ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+}
+
+nav h2 {
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== Search + Filter ===== */
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* ===== Resource Grid ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* ===== Card ===== */
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  padding: 20px;
+  transition: 0.3s;
+  animation: fadeIn 0.6s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.25);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #27ae60;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>♻ Campus Exchange</h2>
+  <div>
+    <a href="aaa.html">Add Resource</a>
+    <a href="browse.html">Browse</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h1>Available Resources</h1>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search items...">
+    <select id="filterCategory">
+      <option value="All">All Categories</option>
+      <option>Books</option>
+      <option>Electronics</option>
+      <option>Furniture</option>
+      <option>Clothing</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="grid" id="resourceGrid"></div>
+
+</div>
+
+<footer>
+  🌱 Exchange • Share • Sustain
+</footer>
+
+<script>
+
+const resources = [
+  {name: "Engineering Maths Book", category: "Books"},
+  {name: "Old Laptop", category: "Electronics"},
+  {name: "Study Table", category: "Furniture"},
+  {name: "Winter Jacket", category: "Clothing"}
+];
+
+function displayResources(filteredResources) {
+  const grid = document.getElementById("resourceGrid");
+  grid.innerHTML = "";
+
+  filteredResources.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h3>${item.name}</h3>
+      <p>Category: ${item.category}</p>
+      <button onclick="claimItem('${item.name}')">Request</button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterResources() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const category = document.getElementById("filterCategory").value;
+
+  const filtered = resources.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(search);
+    const matchesCategory = category === "All" || item.category === category;
+    return matchesSearch && matchesCategory;
+  });
+
+  displayResources(filtered);
+}
+
+function claimItem(name) {
+  alert("Request sent for: " + name);
+}
+
+document.getElementById("search").addEventListener("input", filterResources);
+document.getElementById("filterCategory").addEventListener("change", filterResources);
+
+displayResources(resources);
+
+</script>
+
+</body>
+</html>
